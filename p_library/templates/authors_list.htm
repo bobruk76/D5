@@ -7,17 +7,11 @@
 </head>
 <body>
 
-<h1 class="text-center">Количество представленных издательств: {{ publishers|length }} .</h1>
+<h1 class="text-center">Количество представленных авторов: {{ object_list|length }} .</h1>
 <div class="container"></div>
     <ul class="list-group col-11 mx-auto">
-        {% for publisher in publishers %}
-            <li class="list-group-item list-group-item-primary">{{ publisher.name }}
-                <span class="badge badge-primary badge-pill">{{ publisher.books.all|length }}</span>
-                <ul>
-                {% for book in publisher.books.all %}
-                    <li class="list-group-item list-group-item-secondary">{{ book.title }} -- {{ book.year_release }}</li>
-                {% endfor %}
-                </ul>
+        {% for autor in object_list %}
+            <li class="list-group-item list-group-item-primary">{{ autor.full_name }}
             </li>
         {% endfor %}
     </ul>
