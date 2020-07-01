@@ -15,7 +15,7 @@ class AuthorEdit(CreateView):
 
 class AuthorList(ListView):
     model = Author
-    template_name = 'authors_list.html'
+    template_name = 'author_list.html'
 
 def index(request):
     template = loader.get_template('index.html')
