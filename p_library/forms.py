@@ -1,7 +1,7 @@
-from django import forms 
+from django import forms
 from p_library.models import Author, Book, Reader
 
-class AuthorForm(forms.ModelForm): 
+class AuthorForm(forms.ModelForm):
 
     full_name = forms.CharField(widget=forms.TextInput)
 
