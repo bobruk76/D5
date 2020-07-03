@@ -35,10 +35,6 @@ class ReaderList(ListView):
     model = Reader
     template_name = 'reader_list.html'
 
-class ReaderList(ListView):
-    model = Reader
-    template_name = 'reader_list.html'
-
 def author_create_many(request):
     AuthorFormSet = formset_factory(AuthorForm, extra=2)  #  Первым делом, получим класс, который будет создавать наши формы. Обратите внимание на параметр `extra`, в данном случае он равен двум, это значит, что на странице с несколькими формами изначально будет появляться 2 формы создания авторов.
     if request.method == 'POST':  #  Наш обработчик будет обрабатывать и GET и POST запросы. POST запрос будет содержать в себе уже заполненные данные формы
