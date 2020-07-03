@@ -1,8 +1,18 @@
-() => {
-    let elements = document.querySelectorAll('form p');
-    console.log(elements);
+function init()  {
+        const p_elements = document.querySelectorAll('form > p');
 
-    elements.forEach(item => {
-        item.addClass("form-group")
-    })
+        p_elements.forEach(item => {
+            item.classList.add("form-group")
+        })
+
+        const input_elements = document.querySelectorAll('form > p > input');
+
+        input_elements.forEach(item => {
+            item.classList.add("form-control")
+        })
+
 }
+
+document.addEventListener("DOMContentLoaded", function(event) {
+    init()
+  });
