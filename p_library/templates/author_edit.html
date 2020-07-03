@@ -3,12 +3,16 @@
 	<head>
 		<meta charset="UTF-8">
 		<title>Форма создания и редактирования Авторов</title>
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+		<link rel="stylesheet" href="{{ STATIC_URL }}style.css" />
 	</head>
 	<body>
-		<form method="post">
-			{% csrf_token %}
-			{{ form.as_p }}
-			<input type="submit" value="Сохранить">
-		</form>
+		<div>
+			<form class="container col-10 mx-auto" method="post">
+				{% csrf_token %}
+				{{ form.as_p }}
+				<input type="submit" class="btn btn-success" value="Сохранить">
+			</form>
+		</div>
 	</body>
 </html>

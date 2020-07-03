@@ -1,6 +1,6 @@
 from django.http import HttpResponse
 from django.template import loader
-from p_library.models import Book, Publisher, Author, Reader
+from p_library.models import *
 from django.shortcuts import redirect, render
 from django.forms import formset_factory
 from django.http.response import HttpResponseRedirect
