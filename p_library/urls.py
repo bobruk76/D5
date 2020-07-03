@@ -10,5 +10,6 @@ urlpatterns = [
     path('author/create_many', author_create_many, name='author_create_many'),
     path('author_book/create_many', books_authors_create_many, name='author_book_create_many'),
 
-    path('readers', ReaderList.as_view(), name='reader_list'),
+    path('reader/', ReaderList.as_view(), name='reader_list'),
+    path('reader/<int:pk>/', ReaderEdit.as_view(), name='reader_edit'),
 ]

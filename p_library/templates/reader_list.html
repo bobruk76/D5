@@ -7,13 +7,20 @@
 </head>
 <body>
 
-<h1 class="text-center">Количество представленных авторов: {{ object_list|length }} .</h1>
+<h1 class="text-center">Количество представленных читателей: {{ object_list|length }}</h1>
 <div class="container"></div>
-    <ul class="list-group col-11 mx-auto">
+    <div class="list-group col-6 mx-auto">
         {% for reader in object_list %}
-            <li><a href="{{reader.id}}/">{{ reader }}</a></li>
+            <a class="list-group-item list-group-item-action" href="{{reader.id}}/">{{ reader.name }}
+                <span class="badge badge-primary badge-pill">{{ reader.books.all|length }}</span>
+                <ul>
+                    {% for book in reader.books.all %}
+                        <li class="list-group-item list-group-item-secondary">{{ book.title }} -- {{ book.year_release }}</li>
+                    {% endfor %}
+                </ul>
+            </a>
         {% endfor %}
-    </ul>
+    </div>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
 </body>
 </html>

@@ -4,20 +4,36 @@ from p_library.models import *
 from django.shortcuts import redirect, render
 from django.forms import formset_factory
 from django.http.response import HttpResponseRedirect
-
-from p_library.forms import AuthorForm
+from django.views.generic import CreateView, ListView, UpdateView, DeleteView
+from p_library.forms import *
 from django.views.generic import CreateView, ListView
 from django.urls import reverse_lazy
 
-class AuthorEdit(CreateView):
+class AuthorCreate(CreateView):
     model = Author
     form_class = AuthorForm
     success_url = reverse_lazy('p_library:author_list')
     template_name = 'author_edit.html'
 
+class AuthorEdit(UpdateView):
+    model = Author
+    form_class = AuthorForm
+    success_url = reverse_lazy('p_library:author_list')
+    template_name = '_edit.html'
+
+class ReaderEdit(UpdateView):
+    model = Reader
+    form_class = ReaderForm
+    success_url = reverse_lazy('p_library:reader_list')
+    template_name = '_edit.html'
+
 class AuthorList(ListView):
     model = Author
     template_name = 'author_list.html'
+
+class ReaderList(ListView):
+    model = Reader
+    template_name = 'reader_list.html'
 
 class ReaderList(ListView):
     model = Reader
