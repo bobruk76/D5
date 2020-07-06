@@ -35,8 +35,7 @@ class ReaderList(ListView):
 
 class ReaderCreate(CreateView):
     model = Reader
-    fields = ['name',]
-    form_class = ReaderForm
+    form_class = ReaderSessionForm
     success_url = reverse_lazy('p_library:reader_list')
     template_name = '_edit.html'
 
