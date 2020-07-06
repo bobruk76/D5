@@ -1,12 +1,11 @@
 from django.http import HttpResponse
 from django.template import loader
-from p_library.models import *
 from django.shortcuts import redirect, render
-from django.forms import formset_factory
+
 from django.http.response import HttpResponseRedirect
 from django.views.generic import CreateView, ListView, UpdateView, DeleteView
+from django.forms import formset_factory
 from p_library.forms import *
-from django.views.generic import CreateView, ListView
 from django.urls import reverse_lazy
 
 class AuthorList(ListView):
@@ -30,20 +29,26 @@ class AuthorDelete(DeleteView):
     success_url = reverse_lazy('p_library:author_list')
     template_name = '_delete.html'
 
-
 class ReaderList(ListView):
     model = Reader
     template_name = 'reader_list.html'
 
+class ReaderCreate(CreateView):
+    model = Reader
+    fields = ['name',]
+    form_class = ReaderForm
+    success_url = reverse_lazy('p_library:reader_list')
+    template_name = '_edit.html'
+
 class ReaderDelete(DeleteView):
     model = Reader
-    success_url = 'author_list'
+    success_url = reverse_lazy('p_library:reader_list')
+    template_name = '_delete.html'
 
-class ReaderEdit(UpdateView):
+class ReaderUpdate(UpdateView):
     model = Reader
-    fields = ['name']
     form_class = ReaderForm
-    success_url ='p_library:reader-list'
+    success_url = reverse_lazy('p_library:reader_list')
     template_name = '_edit.html'
 
 def author_create_many(request):
