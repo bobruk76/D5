@@ -26,3 +26,11 @@ class PublisherAdmin(admin.ModelAdmin):
 @admin.register(BookPublishing)
 class BookPublishingAdmin(admin.ModelAdmin):
     pass
+
+@admin.register(Reader)
+class ReadergAdmin(admin.ModelAdmin):
+    pass
+
+@admin.register(BookReading)
+class BookReadingAdmin(admin.ModelAdmin):
+    pass

@@ -72,14 +72,6 @@ class BookReading(models.Model):
                          str(self.reader),
                          str(self.completion),))
 
-class Publisher(models.Model):
-    name = models.TextField(verbose_name=_("Название издательства"))
-
-    books = models.ManyToManyField("p_library.Book", verbose_name=_("Книги"),
-                                   through="p_library.BookPublishing")
-    def __str__(self):
-        return self.name
-
 class BookPublishing(models.Model):
 
     book = models.ForeignKey("p_library.Book", on_delete=models.CASCADE,

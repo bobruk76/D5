@@ -17,4 +17,4 @@ class BookForm(forms.ModelForm):
 class ReaderForm(forms.ModelForm):
     class Meta:
         model = Reader
-        fields = '__all__'
+        fields = ['name']

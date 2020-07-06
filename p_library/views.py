@@ -9,31 +9,42 @@ from p_library.forms import *
 from django.views.generic import CreateView, ListView
 from django.urls import reverse_lazy
 
-class AuthorCreate(CreateView):
-    model = Author
-    form_class = AuthorForm
-    success_url = reverse_lazy('p_library:author_list')
-    template_name = 'author_edit.html'
-
-class AuthorEdit(UpdateView):
-    model = Author
-    form_class = AuthorForm
-    success_url = reverse_lazy('p_library:author_list')
-    template_name = '_edit.html'
-
-class ReaderEdit(UpdateView):
-    model = Reader
-    form_class = ReaderForm
-    success_url = reverse_lazy('p_library:reader_list')
-    template_name = '_edit.html'
-
 class AuthorList(ListView):
     model = Author
     template_name = 'author_list.html'
 
+class AuthorCreate(CreateView):
+    model = Author
+    form_class = AuthorForm
+    success_url = reverse_lazy('p_library:author_list')
+    template_name = '_edit.html'
+
+class AuthorUpdate(UpdateView):
+    model = Author
+    form_class = AuthorForm
+    success_url = reverse_lazy('p_library:author_list')
+    template_name = '_edit.html'
+
+class AuthorDelete(DeleteView):
+    model = Author
+    success_url = reverse_lazy('p_library:author_list')
+    template_name = '_delete.html'
+
+
 class ReaderList(ListView):
     model = Reader
     template_name = 'reader_list.html'
+
+class ReaderDelete(DeleteView):
+    model = Reader
+    success_url = 'author_list'
+
+class ReaderEdit(UpdateView):
+    model = Reader
+    fields = ['name']
+    form_class = ReaderForm
+    success_url ='p_library:reader-list'
+    template_name = '_edit.html'
 
 def author_create_many(request):
     AuthorFormSet = formset_factory(AuthorForm, extra=2)  #  Первым делом, получим класс, который будет создавать наши формы. Обратите внимание на параметр `extra`, в данном случае он равен двум, это значит, что на странице с несколькими формами изначально будет появляться 2 формы создания авторов.

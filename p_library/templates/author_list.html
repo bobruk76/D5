@@ -2,7 +2,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Authors</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
 </head>
 <body>
@@ -10,6 +10,9 @@
 <h1 class="text-center">Количество представленных авторов: {{ object_list|length }}</h1>
 <div class="container"></div>
     <div class="list-group col-6 mx-auto">
+        <form action="create" class="justify-content-start mt-1">
+            <button class="btn btn-outline-success col-4" >Новый</button>
+        </form>
         {% for author in object_list %}
             <a class="list-group-item list-group-item-action" href="{{author.id}}/">{{ author.full_name }}</a>
         {% endfor %}
