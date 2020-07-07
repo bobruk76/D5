@@ -5,7 +5,7 @@ function init()  {
             item.classList.add("form-group")
         })
 
-        const input_elements = document.querySelectorAll('form > p > input');
+        const input_elements = document.querySelectorAll('form > p > input, form > p > select');
 
         input_elements.forEach(item => {
             item.classList.add("form-control")
