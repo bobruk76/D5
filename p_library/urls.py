@@ -16,5 +16,5 @@ urlpatterns = [
     path('reader/create', ReaderCreate.as_view(), name='reader_create'),
     path('reader/', ReaderList.as_view(), name='reader_list'),
     path('reader/<int:pk>/', ReaderUpdate.as_view(), name='reader_update'),
-    path('reader/<int:pk>/delete/', AuthorDelete.as_view(), name='reader_delete'),
+    path('reader/<int:pk>/delete/', ReaderDelete.as_view(), name='reader_delete'),
 ]

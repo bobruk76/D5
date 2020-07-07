@@ -7,10 +7,11 @@
 
     </head>
     <body>
+        <div class="container col-6">
         <h1 class="text-center">Внимание запись будет удалена!</h1>
-        <form class="container  mt-5" method="post">{% csrf_token %}
-
+        <form class="mt-5" method="post">{% csrf_token %}
             <input type="submit" class="btn btn-outline-danger col-4" value="Удалить">
         </form>
+        </div>
     </body>
 </html>

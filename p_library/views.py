@@ -6,6 +6,7 @@ from django.http.response import HttpResponseRedirect
 from django.views.generic import CreateView, ListView, UpdateView, DeleteView
 from django.forms import formset_factory
 from p_library.forms import *
+from p_library.models import *
 from django.urls import reverse_lazy
 
 class AuthorList(ListView):
@@ -103,35 +104,35 @@ def book_increment(request):
     if request.method == 'POST':
         book_id = request.POST['id']
         if not book_id:
-            return redirect('/index/')
+            return redirect('/books/')
         else:
             book = Book.objects.filter(id=book_id).first()
             if not book:
-                return redirect('/index/')
+                return redirect('/books/')
             book.copy_count += 1
             book.save()
-        return redirect('/index/')
+        return redirect('/books/')
     else:
-        return redirect('/index/')
+        return redirect('/books/')
 
 
 def book_decrement(request):
     if request.method == 'POST':
         book_id = request.POST['id']
         if not book_id:
-            return redirect('/index/')
+            return redirect('/books/')
         else:
             book = Book.objects.filter(id=book_id).first()
             if not book:
-                return redirect('/index/')
+                return redirect('/books/')
             if book.copy_count < 1:
                 book.copy_count = 0
             else:
                 book.copy_count -= 1
             book.save()
-        return redirect('/index/')
+        return redirect('/books/')
     else:
-        return redirect('/index/')
+        return redirect('/books/')
 
 def books_publ(request):
     template = loader.get_template('publishing.html')
